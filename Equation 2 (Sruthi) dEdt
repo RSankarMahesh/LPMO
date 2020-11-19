@@ -1,0 +1,16 @@
+tRange=[0 3];
+Y0=[0 0];
+[tSol,YSol]=ode45(@odefun,tRange,Y0);
+y1=YSol(:,1)
+plot(tSol,y1);
+hold on;
+y2=YSol(:,2);
+plot(tSol,y2);
+legend('Endoglucanase','Cellobiohydrolase');
+function dYdt=odefun(t,Y)
+y=Y(1);
+x=Y(2);
+dydt=8640*(1.6-y)*(6.6*10^-5)-19.3*y;
+dxdt=8640*(1.6-x)*(6.6*10^-5)-164*x;
+dYdt=[dydt; dxdt];
+end
