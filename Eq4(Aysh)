@@ -1,0 +1,14 @@
+
+[tSol,YSol]=ode45('g',[0 3],0);
+y1=YSol(:,1);
+y2=YSol(:,2);
+Plot(tSol, y1);
+Plot(tSol, y2);
+function dYdt=g(t,Y) 
+         y=Y(1);
+         X=Y(2);
+         dydt=8640*(1.6-y)*(6.6*10^-5)-19.3*y;
+         dxdt=8640*(1.6-x)*(6.6*10^-5)-164*x;
+         dYdt=[dydt;dxdt] ;
+end 
+
