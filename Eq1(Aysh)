@@ -1,0 +1,14 @@
+tRange=[0 1];Y0=100;
+[t,r]=ode45('g',tRange,Y0);
+Plot(t,r);
+
+function drdt=g(t, r)
+       ri=[1, 2,3 4,5,6];
+       S=0;
+       for i=1:6
+       S=S+ri(i)*i;
+       end
+       SA=0.162;MW=8;
+       drdt=-r*(SA*MW/3)*s;
+end 
+     
