@@ -1,3 +1,4 @@
+
 tRange=[0 0.1];
 Y0=[0 0 6.5*10^5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1];
 [tSol,YSol] = ode45(@odefun,tRange,Y0);
