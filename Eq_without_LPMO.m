@@ -20,8 +20,9 @@ ylabel('Cellulose');
 legend('c1','c2','c6','c15');
 
 function dYdt = odefun(t,Y)
-eg=Y(1);
-cbh=Y(2);
+%Ci-soluble cello-oligosaccharide chain of length i (i < 7) 
+eg=Y(1);%eg-endoglucanase 
+cbh=Y(2);%cbh-cellobiohydrolase 
 c15=Y(3);
 c14=Y(4);
 c13=Y(5);
@@ -39,17 +40,27 @@ c2=Y(16);
 c1=Y(17);
 r=Y(18);
 a=19403;
-b=6.65*10^5;
+b=6.65*10^5;%*max-free sites
 c=2452;
 d=2937;
 e=7.8*10^7;
 ri = [1,2,3,4,5,6];
 Sum = 0;
 for i = 1:6
+%ri-rate of formation of a length i soluble sugar from solid
+substrate
 Sum = Sum + ri(i) * i;
 end
+%kEG2-ads=8640
+%kx-ads=adsorption constant for a cellulase of type x onto a cellulose
+surface
+%kCBH1-ads=8640
+%SA_cellulose surface area
+%MW-cellulose monomer molecular weight 
 SA = 0.162; MW = 8;
 drdt = -r*(SA*MW/3)* Sum;
+%EEG2-total=1.6(enzyme loadings set) 
+%ECBH2-total=1.6(Enzyme loadings set) 
 degdt=8640*(1.6-eg)*(6.6*10^-5)-19.3*eg;
 dcbhdt=8640*(1.6-cbh)*(6.6*10^-5)-164*cbh;
 dc15dt=a*eg*(-14*c15)-b*cbh*c15;
